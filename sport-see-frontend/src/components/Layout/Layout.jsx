@@ -1,10 +1,8 @@
 import "./Layout.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.svg";
-import relaxationIcon from "../../assets/icons/relaxation-icon.svg";
-import swimmingIcon from "../../assets/icons/swimming-icon.svg";
-import cyclingIcon from "../../assets/icons/cycling-icon.svg";
-import weightIcon from "../../assets/icons/weight-icon.svg";
+import pictoButtonList from "../../utils/pictoButtonList";
+import PictoButton from "../PictoButton/PictoButton";
 
 const Layout = () => (
   <div className="layoutWrapper">
@@ -30,18 +28,9 @@ const Layout = () => (
     <main>
       <nav className="mainNav">
         <div className="pictoButtonsWrapper">
-          <div className="pictoButton">
-            <img src={relaxationIcon} alt="" />
-          </div>
-          <div className="pictoButton">
-            <img src={swimmingIcon} alt="" />
-          </div>
-          <div className="pictoButton">
-            <img src={cyclingIcon} alt="" />
-          </div>
-          <div className="pictoButton">
-            <img src={weightIcon} alt="" />
-          </div>
+          {pictoButtonList.map((picto) => (
+            <PictoButton key={picto.name} picto={picto.icon} />
+          ))}
         </div>
         <p className="copyright">Copiryght, SportSee 2020</p>
       </nav>
