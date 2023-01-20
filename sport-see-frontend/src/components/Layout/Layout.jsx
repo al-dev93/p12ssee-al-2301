@@ -1,5 +1,5 @@
 import "./Layout.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import logo from "../../assets/logo/logo.svg";
 import pictoButtonList from "../../utils/pictoButtonList";
 import PictoButton from "../PictoButton/PictoButton";
@@ -34,7 +34,9 @@ const Layout = () => (
         </div>
         <p className="copyright">Copiryght, SportSee 2020</p>
       </nav>
-      <section>content</section>
+      <section>
+        <Outlet />
+      </section>
     </main>
   </div>
 );

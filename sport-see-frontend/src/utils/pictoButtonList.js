@@ -9,7 +9,7 @@ const pictoButtonList = [
     icon: relaxation,
   },
   {
-    name: "sximming",
+    name: "swimming",
     icon: swimming,
   },
   {
