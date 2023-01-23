@@ -75,3 +75,7 @@ main {
   writing-mode: sideways-lr;
   font-size: 12px;
 }
+
+section {
+  width: 100%;
+}
