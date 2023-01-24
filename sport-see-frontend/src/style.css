@@ -45,3 +45,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+strong {
+  color: var(--emphasis-text-color);
+}

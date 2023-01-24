@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import pictoButton from "./PictoButton.module.css";
+import pictoButton from "./style.module.css";
 
 const PictoButton = ({ picto }) => (
   <div className={pictoButton.wrapper}>

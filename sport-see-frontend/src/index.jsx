@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import "./index.css";
+import "./style.css";
 import Router from "./Router";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
