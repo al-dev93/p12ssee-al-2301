@@ -1,0 +1,19 @@
+.profilWrapper {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 86.2%;
+}
+
+.profilWrapper header {
+  display: block;
+  width: max-content;
+  background: none;
+  padding: 0;
+}
+
+.profilWrapper h1 {
+  margin: 0 0 41px;
+  width: max-content;
+  font-size: 48px;
+  font-weight: var(--font-weight-medium);
+}
