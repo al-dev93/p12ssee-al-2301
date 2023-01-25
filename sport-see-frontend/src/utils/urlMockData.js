@@ -7,11 +7,11 @@ const USER_AVERAGE_SESSIONS =
 const USER_PERFORMANCE =
   "//127.0.0.1/private/p12ssee-al-2301/sport-see-frontend/src/services/mock/performance.json";
 
-const ALL_USER_DATA = [
-  USER_MAIN_DATA,
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_PERFORMANCE,
-];
+const USER_ALL_DATA = {
+  userData: USER_MAIN_DATA,
+  userActivity: USER_ACTIVITY,
+  userAverageSessions: USER_AVERAGE_SESSIONS,
+  userPerformance: USER_PERFORMANCE,
+};
 
-export { USER_MAIN_DATA, ALL_USER_DATA };
+export { USER_MAIN_DATA, USER_ALL_DATA };

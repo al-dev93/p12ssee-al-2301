@@ -1,25 +1,40 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import getUserData from "../../utils/getUserData";
 
 const useFetchData = (url, userId) => {
   const locate = useLocation().pathname;
-  const [usersData, setUsersData] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [userActivity, setUserActivity] = useState(null);
 
   useEffect(() => {
     (async function fetchData() {
-      // eslint-disable-next-line prefer-const
-      let data = await (await fetch(url)).json();
-      setUsersData(data.data);
+      if (userId) {
+        fetch(url.userData)
+          .then((response) => response.json())
+          .then((response) => {
+            const data = getUserData(response.data, userId);
+            setUserData(data.userInfos);
+          });
+        fetch(url.userActivity)
+          .then((response) => response.json())
+          .then((response) => {
+            const data = getUserData(response.data, userId);
+            setUserActivity(data.sessions);
+          });
+      } else {
+        const data = await (await fetch(url)).json();
+        setUserData(data.data);
+      }
     })();
   }, [url, locate]);
 
-  if (userId && usersData) {
-    const user = usersData.find((item) => `${item.id}` === userId).userInfos;
-    return { user };
+  if (userId) {
+    return { userData, userActivity };
   }
   const users =
-    usersData &&
-    usersData.map((item) => {
+    userData &&
+    userData.map((item) => {
       return {
         id: item.id,
         firstName: item.userInfos.firstName,
