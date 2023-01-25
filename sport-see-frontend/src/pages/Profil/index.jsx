@@ -5,18 +5,15 @@ import useFetchData from "../../services/api/useFetchData";
 
 const Profil = () => {
   const { userId } = useParams();
-  const { usersData } = useFetchData(USER_MAIN_DATA);
+  const { userInfo } = useFetchData(USER_MAIN_DATA, userId);
+  // eslint-disable-next-line no-console
+  console.log(userInfo);
 
   return (
     <div className="profilWrapper">
       <header>
         <h1>
-          Bonjour{" "}
-          <strong>
-            {usersData &&
-              usersData.find((user) => `${user.id}` === userId).userInfos
-                .firstName}
-          </strong>
+          Bonjour <strong>{userInfo && userInfo.firstName}</strong>
         </h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
