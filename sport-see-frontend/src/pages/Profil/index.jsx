@@ -6,13 +6,12 @@ import useFetchData from "../../services/api/useFetchData";
 
 const Profil = () => {
   const { userId } = useParams();
-  const { userData, userActivity, userAverageSessions } = useFetchData(
-    USER_ALL_DATA,
-    userId
-  );
+  const { userData, userActivity, userAverageSessions, userTodayScore } =
+    useFetchData(USER_ALL_DATA, userId);
   console.log(userData);
   console.log(userActivity);
   console.log(userAverageSessions);
+  console.log(userTodayScore);
 
   return (
     <div className="profilWrapper">

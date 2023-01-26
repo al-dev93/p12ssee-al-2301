@@ -7,6 +7,7 @@ const useFetchData = (url, userId) => {
   const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
+  const [userTodayScore, setUserTodayScore] = useState(null);
 
   useEffect(() => {
     (async function fetchData() {
@@ -16,6 +17,7 @@ const useFetchData = (url, userId) => {
           .then((response) => {
             const data = getUserData(response.data, userId);
             setUserData(data.userInfos);
+            setUserTodayScore(data.todayScore);
           });
         fetch(url.userActivity)
           .then((response) => response.json())
@@ -37,7 +39,7 @@ const useFetchData = (url, userId) => {
   }, [url, locate]);
 
   if (userId) {
-    return { userData, userActivity, userAverageSessions };
+    return { userData, userActivity, userAverageSessions, userTodayScore };
   }
   const users =
     userData &&
