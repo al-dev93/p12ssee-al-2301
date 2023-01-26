@@ -16,8 +16,14 @@ const useFetchData = (url, userId) => {
           .then((response) => response.json())
           .then((response) => {
             const data = getUserData(response.data, userId);
+            const score = Object.prototype.hasOwnProperty.call(
+              data,
+              "todayScore"
+            )
+              ? data.todayScore
+              : data.score;
             setUserData(data.userInfos);
-            setUserTodayScore(data.todayScore);
+            setUserTodayScore(score);
           });
         fetch(url.userActivity)
           .then((response) => response.json())
