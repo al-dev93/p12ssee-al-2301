@@ -6,6 +6,7 @@ const useFetchData = (url, userId) => {
   const locate = useLocation().pathname;
   const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
+  const [userAverageSessions, setUserAverageSessions] = useState(null);
 
   useEffect(() => {
     (async function fetchData() {
@@ -22,6 +23,12 @@ const useFetchData = (url, userId) => {
             const data = getUserData(response.data, userId);
             setUserActivity(data.sessions);
           });
+        fetch(url.userAverageSessions)
+          .then((response) => response.json())
+          .then((response) => {
+            const data = getUserData(response.data, userId);
+            setUserAverageSessions(data.sessions);
+          });
       } else {
         const data = await (await fetch(url)).json();
         setUserData(data.data);
@@ -30,7 +37,7 @@ const useFetchData = (url, userId) => {
   }, [url, locate]);
 
   if (userId) {
-    return { userData, userActivity };
+    return { userData, userActivity, userAverageSessions };
   }
   const users =
     userData &&
