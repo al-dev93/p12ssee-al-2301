@@ -1,17 +1,25 @@
 /* eslint-disable no-console */
 import "./style.css";
 import { useParams } from "react-router-dom";
-import { USER_ALL_DATA } from "../../utils/urlMockData";
 import useFetchData from "../../services/api/useFetchData";
+import { USER_ALL_DATA } from "../../utils/urlMockData";
+import KIND_PERFORMANCE from "../../utils/kindValues";
 
 const Profil = () => {
   const { userId } = useParams();
-  const { userData, userActivity, userAverageSessions, userTodayScore } =
-    useFetchData(USER_ALL_DATA, userId);
+  const {
+    userData,
+    userActivity,
+    userAverageSessions,
+    userTodayScore,
+    userPerformance,
+  } = useFetchData(USER_ALL_DATA, userId);
   console.log(userData);
   console.log(userActivity);
   console.log(userAverageSessions);
   console.log(userTodayScore);
+  console.log(KIND_PERFORMANCE);
+  console.log(userPerformance);
 
   return (
     <div className="profilWrapper">
