@@ -38,8 +38,7 @@ li:last-child {
 main {
   display: flex;
   min-height: 689px;
-  /* height: calc(100% - 91px); */
-  height: auto;
+  height: calc(100% - 3px);
 }
 
 .mainNav {
