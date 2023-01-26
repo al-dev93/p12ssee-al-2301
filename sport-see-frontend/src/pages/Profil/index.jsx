@@ -24,14 +24,21 @@ const Profil = () => {
   console.log(userKeyData);
 
   return (
-    <div className="profilWrapper">
-      <header>
+    <>
+      <header className="dashboardHeader">
         <h1>
           Bonjour <strong>{userData && userData.firstName}</strong>
         </h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
-    </div>
+      <div className="dashboardWrapper">
+        <section className="activityGraphic">Activité</section>
+        <section className="averageSessionsGraphic">Sessions</section>
+        <section className="performanceGraphic">Performance</section>
+        <section className="todayScoreGraphic">Score</section>
+        <aside className="keyDataCards">données clés</aside>
+      </div>
+    </>
   );
 };
 

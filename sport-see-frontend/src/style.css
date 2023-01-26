@@ -13,6 +13,8 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --normal-line-height: 24px;
+  /* graphics */
+  --graphic-border-color: #979797;
 }
 
 * {

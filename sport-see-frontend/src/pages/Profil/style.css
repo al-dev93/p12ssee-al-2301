@@ -1,19 +1,50 @@
-.profilWrapper {
-  box-sizing: border-box;
-  margin: 0 auto;
-  width: 86.2%;
-}
-
-.profilWrapper header {
+.dashboardHeader {
   display: block;
   width: max-content;
   background: none;
+  margin-bottom: 77px;
   padding: 0;
 }
 
-.profilWrapper h1 {
+.dashboardHeader h1 {
   margin: 0 0 41px;
   width: max-content;
   font-size: 48px;
   font-weight: var(--font-weight-medium);
+}
+
+.dashboardWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(263px, auto);
+  column-gap: 30px;
+  row-gap: 28px;
+}
+
+.dashboardWrapper section,
+aside {
+  border: solid var(--graphic-border-color);
+}
+
+.activityGraphic {
+  grid-area: 1 / 1 / 2 / 4;
+}
+
+.averageSessionsGraphic {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.performanceGraphic {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.todayScoreGraphique {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.keyDataCards {
+  grid-area: 1 / 4 / 3 / 5;
 }

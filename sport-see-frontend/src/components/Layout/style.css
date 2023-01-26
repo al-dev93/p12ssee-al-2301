@@ -38,7 +38,8 @@ li:last-child {
 main {
   display: flex;
   min-height: 689px;
-  height: calc(100% - 91px);
+  /* height: calc(100% - 91px); */
+  height: auto;
 }
 
 .mainNav {
@@ -77,6 +78,8 @@ main {
 }
 
 article {
-  width: 100%;
-  padding: 68px 0px 0px 17px;
+  box-sizing: border-box;
+  width: 79.38%;
+  margin: 0 auto;
+  padding: 68px 0px 88px 17px;
 }
