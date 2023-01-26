@@ -9,6 +9,7 @@ const useFetchData = (url, userId) => {
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userTodayScore, setUserTodayScore] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
+  const [userKeyData, setUserKeyData] = useState(null);
 
   useEffect(() => {
     (async function fetchData() {
@@ -25,6 +26,7 @@ const useFetchData = (url, userId) => {
               : data.score;
             setUserData(data.userInfos);
             setUserTodayScore(score);
+            setUserKeyData(data.keyData);
           });
         fetch(url.userActivity)
           .then((response) => response.json())
@@ -58,6 +60,7 @@ const useFetchData = (url, userId) => {
       userAverageSessions,
       userTodayScore,
       userPerformance,
+      userKeyData,
     };
   }
   const users =

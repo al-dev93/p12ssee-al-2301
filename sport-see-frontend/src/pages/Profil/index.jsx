@@ -13,6 +13,7 @@ const Profil = () => {
     userAverageSessions,
     userTodayScore,
     userPerformance,
+    userKeyData,
   } = useFetchData(USER_ALL_DATA, userId);
   console.log(userData);
   console.log(userActivity);
@@ -20,6 +21,7 @@ const Profil = () => {
   console.log(userTodayScore);
   console.log(KIND_PERFORMANCE);
   console.log(userPerformance);
+  console.log(userKeyData);
 
   return (
     <div className="profilWrapper">
