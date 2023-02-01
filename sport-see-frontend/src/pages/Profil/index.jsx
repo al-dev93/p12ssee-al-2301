@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useFetchData from "../../services/api/useFetchData";
 import { USER_ALL_DATA } from "../../utils/urlMockData";
 import KIND_PERFORMANCE from "../../utils/kindValues";
+import ActivityBarChart from "../../components/ActivityBarChart";
 
 const Profil = () => {
   const { userId } = useParams();
@@ -32,7 +33,10 @@ const Profil = () => {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
       <div className="dashboardWrapper">
-        <section className="activityGraphic">Activité</section>
+        <section className="activityGraphic">
+          <h2 className="barChartTitle">Activité quotidienne</h2>
+          {userActivity && <ActivityBarChart data={userActivity} />}
+        </section>
         <section className="averageSessionsGraphic">Sessions</section>
         <section className="performanceGraphic">Performance</section>
         <section className="todayScoreGraphic">Score</section>

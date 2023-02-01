@@ -23,11 +23,25 @@
 
 .dashboardWrapper section,
 aside {
-  border: solid var(--graphic-border-color);
+  box-sizing: border-box;
 }
 
 .activityGraphic {
   grid-area: 1 / 1 / 2 / 4;
+  min-height: 320px;
+  position: relative;
+  background-color: var(--light-background-color);
+  border-radius: 5px;
+}
+
+.barChartTitle {
+  position: absolute;
+  margin: 0;
+  top: 24px;
+  left: 32px;
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  color: var(--title-text-color);
 }
 
 .averageSessionsGraphic {

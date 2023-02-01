@@ -8,6 +8,7 @@
   --title-text-color: #20253a;
   --legend-text-color: #74798c;
   --mark-graphic-color: #c4c4c4;
+  --light-grey-text-color: #9b9eac;
   /* typography */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -15,6 +16,9 @@
   --normal-line-height: 24px;
   /* graphics */
   --graphic-border-color: #979797;
+  --graphic-black-color: #282d30;
+  --graphic-red-color: #e60000;
+  --graphic-lightness-grey-color: "#dedede";
 }
 
 * {
