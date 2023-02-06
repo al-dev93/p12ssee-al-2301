@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import getSessionsWithDay from "../../utils/getSessionsWithDay";
 import getUserData from "../../utils/getUserData";
 
 const useFetchData = (url, userId) => {
   const locate = useLocation().pathname;
   const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
-  const [userAverageSessions, setUserAverageSessions] = useState(null);
+  const [userSessions, setUserSessions] = useState(null);
   const [userTodayScore, setUserTodayScore] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
   const [userKeyData, setUserKeyData] = useState(null);
@@ -31,20 +32,20 @@ const useFetchData = (url, userId) => {
         fetch(url.userActivity)
           .then((response) => response.json())
           .then((response) => {
-            const data = getUserData(response.data, userId);
-            setUserActivity(data.sessions);
+            const { sessions } = getUserData(response.data, userId);
+            setUserActivity(sessions);
           });
         fetch(url.userAverageSessions)
           .then((response) => response.json())
-          .then((response) => {
-            const data = getUserData(response.data, userId);
-            setUserAverageSessions(data.sessions);
+          .then(async (response) => {
+            const { sessions } = getUserData(response.data, userId);
+            setUserSessions(sessions);
           });
         fetch(url.userPerformance)
           .then((response) => response.json())
           .then((response) => {
-            const data = getUserData(response.data, userId);
-            setUserPerformance(data.data);
+            const { data } = getUserData(response.data, userId);
+            setUserPerformance(data);
           });
       } else {
         const data = await (await fetch(url)).json();
@@ -54,6 +55,10 @@ const useFetchData = (url, userId) => {
   }, [url, locate]);
 
   if (userId) {
+    const userAverageSessions =
+      userActivity && userSessions
+        ? getSessionsWithDay(userActivity, userSessions)
+        : null;
     return {
       userData,
       userActivity,

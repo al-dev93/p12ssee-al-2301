@@ -38,7 +38,7 @@ header {
 main {
   display: flex;
   min-height: 689px;
-  height: calc(100% - 3px);
+  /* height: calc(100% - 3px); */
 }
 
 .mainNav {

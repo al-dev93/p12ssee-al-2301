@@ -5,6 +5,7 @@ import useFetchData from "../../services/api/useFetchData";
 import { USER_ALL_DATA } from "../../utils/urlMockData";
 import KIND_PERFORMANCE from "../../utils/kindValues";
 import ActivityBarChart from "../../components/ActivityBarChart";
+import AverageSessionsGraphic from "../../components/AverageSessionsGraphic";
 
 const Profil = () => {
   const { userId } = useParams();
@@ -37,7 +38,12 @@ const Profil = () => {
           <h2 className="barChartTitle">Activité quotidienne</h2>
           {userActivity && <ActivityBarChart data={userActivity} />}
         </section>
-        <section className="averageSessionsGraphic">Sessions</section>
+        <section className="averageSessionsGraphic">
+          <h2 className="lineChartTitle">Durée moyenne des sessions</h2>
+          {userAverageSessions && (
+            <AverageSessionsGraphic data={userAverageSessions} />
+          )}
+        </section>
         <section className="performanceGraphic">Performance</section>
         <section className="todayScoreGraphic">Score</section>
         <aside className="keyDataCards">données clés</aside>

@@ -50,6 +50,7 @@ const ActivityBarChart = ({ data }) => {
         barSize={7}
         barCategoryGap={68}
         barGap={8}
+        title="Activité quotidienne"
       >
         <CartesianGrid
           vertical=""
@@ -59,9 +60,9 @@ const ActivityBarChart = ({ data }) => {
         />
         <XAxis
           axisLine={{ stroke: "var(--graphic-lightness-grey-color)" }}
+          height={24}
           padding={{ left: -44, right: -44 }}
           tickMargin={16}
-          height={24}
           fontSize={14}
           fontWeight={500}
           color="var(--light-grey-text-color)"
@@ -76,8 +77,8 @@ const ActivityBarChart = ({ data }) => {
           axisLine=""
           tickLine=""
           type="number"
-          domain={["auto", "auto"]}
           hide="true"
+          domain={["auto", "auto"]}
         />
         <YAxis
           tickMargin={43}
@@ -126,8 +127,8 @@ const ActivityBarChart = ({ data }) => {
             opacity: 0.5,
             x: tooltipPosition.x,
           }}
-          offset={28}
-          position={{ y: tooltipPosition.y }}
+          // offset={28}
+          position={{ x: tooltipPosition.x + 63, y: tooltipPosition.y }}
           allowEscapeViewBox={{ y: true }}
         />
         <Legend
@@ -175,6 +176,11 @@ const ActivityBarChart = ({ data }) => {
 export default ActivityBarChart;
 
 ActivityBarChart.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  data: propTypes.array.isRequired,
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      day: propTypes.string,
+      kilogram: propTypes.number,
+      calories: propTypes.number,
+    })
+  ).isRequired,
 };

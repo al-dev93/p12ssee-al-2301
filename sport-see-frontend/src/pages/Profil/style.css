@@ -24,29 +24,47 @@
 .dashboardWrapper section,
 aside {
   box-sizing: border-box;
+  border-radius: 5px;
 }
-
+.dashboardWrapper h2 {
+  position: absolute;
+  margin: 0;
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+}
+/* graphique activité quotidienne */
 .activityGraphic {
   grid-area: 1 / 1 / 2 / 4;
-  min-height: 320px;
+  height: 320px;
   position: relative;
-  background-color: var(--light-background-color);
-  border-radius: 5px;
+  background-color: var(--red-background-color);
 }
 
 .barChartTitle {
-  position: absolute;
-  margin: 0;
   top: 24px;
   left: 32px;
-  font-size: 15px;
-  font-weight: var(--font-weight-medium);
   color: var(--title-text-color);
 }
 
+.averageSessionsGraphic,
+.performanceGraphic,
+.todayScoreGraphique {
+  height: 263px;
+}
+/* graphique durée moyenne des sessions */
 .averageSessionsGraphic {
   grid-column: 1;
   grid-row: 2;
+  position: relative;
+  background-color: var(--graphic-red-color);
+}
+
+.lineChartTitle {
+  top: 29px;
+  left: 34px;
+  width: 147px;
+  color: var(--primary-color);
+  opacity: 50.4%;
 }
 
 .performanceGraphic {
