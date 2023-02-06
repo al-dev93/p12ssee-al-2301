@@ -113,6 +113,7 @@ const AverageSessionsGraphic = ({ data }) => {
             color: "var(--secondary-color)",
             fontSize: 8,
             fontWeight: 500,
+            padding: "1px 0 0 0",
           }}
           contentStyle={{
             padding: 0,
