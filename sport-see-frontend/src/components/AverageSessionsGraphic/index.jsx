@@ -47,9 +47,9 @@ const CustomizedCursor = ({
         onMouseMove={handleTooltipPosition}
       />
       <Rectangle
-        x={points[0].x}
+        x={points[0].x - 1}
         y={0}
-        width={width - points[0].x - 1}
+        width={width - points[0].x + 1}
         height={points[1].y + bottom}
         fill="var(--secondary-color)"
         fillOpacity={0.0975}

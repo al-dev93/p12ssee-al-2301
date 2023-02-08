@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { getFrenchKindName } from "../../utils/getFrenchKindName";
 import getSessionsWithDay from "../../utils/getSessionsWithDay";
 import getUserData from "../../utils/getUserData";
 
@@ -9,7 +10,7 @@ const useFetchData = (url, userId) => {
   const [userActivity, setUserActivity] = useState(null);
   const [userSessions, setUserSessions] = useState(null);
   const [userTodayScore, setUserTodayScore] = useState(null);
-  const [userPerformance, setUserPerformance] = useState(null);
+  const [dataPerformance, setDataPerformance] = useState(null);
   const [userKeyData, setUserKeyData] = useState(null);
 
   useEffect(() => {
@@ -44,12 +45,12 @@ const useFetchData = (url, userId) => {
         fetch(url.userPerformance)
           .then((response) => response.json())
           .then((response) => {
-            const { data } = getUserData(response.data, userId);
-            setUserPerformance(data);
+            const { kind, data } = getUserData(response.data, userId);
+            setDataPerformance({ kind, data });
           });
       } else {
-        const data = await (await fetch(url)).json();
-        setUserData(data.data);
+        const { data } = await (await fetch(url)).json();
+        setUserData(data);
       }
     })();
   }, [url, locate]);
@@ -59,6 +60,8 @@ const useFetchData = (url, userId) => {
       userActivity && userSessions
         ? getSessionsWithDay(userActivity, userSessions)
         : null;
+    const userPerformance =
+      dataPerformance && getFrenchKindName(dataPerformance);
     return {
       userData,
       userActivity,

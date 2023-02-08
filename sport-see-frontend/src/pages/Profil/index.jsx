@@ -3,9 +3,9 @@ import "./style.css";
 import { useParams } from "react-router-dom";
 import useFetchData from "../../services/api/useFetchData";
 import { USER_ALL_DATA } from "../../utils/urlMockData";
-import KIND_PERFORMANCE from "../../utils/kindValues";
 import ActivityBarChart from "../../components/ActivityBarChart";
 import AverageSessionsGraphic from "../../components/AverageSessionsGraphic";
+import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 
 const Profil = () => {
   const { userId } = useParams();
@@ -21,7 +21,6 @@ const Profil = () => {
   console.log(userActivity);
   console.log(userAverageSessions);
   console.log(userTodayScore);
-  console.log(KIND_PERFORMANCE);
   console.log(userPerformance);
   console.log(userKeyData);
 
@@ -44,7 +43,9 @@ const Profil = () => {
             <AverageSessionsGraphic data={userAverageSessions} />
           )}
         </section>
-        <section className="performanceGraphic">Performance</section>
+        <section className="performanceGraphic">
+          {userPerformance && <PerformanceRadarChart data={userPerformance} />}
+        </section>
         <section className="todayScoreGraphic">Score</section>
         <aside className="keyDataCards">données clés</aside>
       </div>
