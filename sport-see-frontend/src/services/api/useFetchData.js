@@ -27,7 +27,7 @@ const useFetchData = (url, userId) => {
               ? data.todayScore
               : data.score;
             setUserData(data.userInfos);
-            setUserTodayScore(score);
+            setUserTodayScore([{ score }]);
             setUserKeyData(data.keyData);
           });
         fetch(url.userActivity)

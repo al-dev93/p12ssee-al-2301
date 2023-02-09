@@ -37,18 +37,17 @@ aside {
   grid-area: 1 / 1 / 2 / 4;
   height: 320px;
   position: relative;
-  background-color: var(--red-background-color);
+  background-color: var(--light-background-color);
 }
-
 .barChartTitle {
   top: 24px;
   left: 32px;
   color: var(--title-text-color);
 }
-
+/* graphiques durée moyenne des sessions, performances et score  */
 .averageSessionsGraphic,
 .performanceGraphic,
-.todayScoreGraphique {
+.todayScoreGraphic {
   height: 263px;
 }
 /* graphique durée moyenne des sessions */
@@ -58,7 +57,6 @@ aside {
   position: relative;
   background-color: var(--graphic-red-color);
 }
-
 .lineChartTitle {
   top: 29px;
   left: 34px;
@@ -66,16 +64,32 @@ aside {
   color: var(--primary-color);
   opacity: 50.4%;
 }
-
+/* graphique performances */
 .performanceGraphic {
   grid-column: 2;
   grid-row: 2;
   background-color: var(--graphic-black-color);
 }
-
-.todayScoreGraphique {
+/* graphique score du jour */
+.todayScoreGraphic {
   grid-column: 3;
   grid-row: 2;
+  position: relative;
+  background-color: var(--light-background-color);
+}
+.radialBarChartTitle {
+  top: 24px;
+  left: 30px;
+  color: var(--title-text-color);
+}
+.radarBarChartLabel {
+  width: 36.68%;
+  position: absolute;
+  left: 31.66%;
+  top: calc(50% + 13px);
+  font-size: 16px;
+  color: var(--legend-text-color);
+  text-align: center;
 }
 
 .keyDataCards {

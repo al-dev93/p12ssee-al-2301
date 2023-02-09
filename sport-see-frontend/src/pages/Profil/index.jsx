@@ -6,6 +6,7 @@ import { USER_ALL_DATA } from "../../utils/urlMockData";
 import ActivityBarChart from "../../components/ActivityBarChart";
 import AverageSessionsGraphic from "../../components/AverageSessionsGraphic";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
+import ScoreRadialBarChart from "../../components/ScoreRadialBarChart";
 
 const Profil = () => {
   const { userId } = useParams();
@@ -46,7 +47,11 @@ const Profil = () => {
         <section className="performanceGraphic">
           {userPerformance && <PerformanceRadarChart data={userPerformance} />}
         </section>
-        <section className="todayScoreGraphic">Score</section>
+        <section className="todayScoreGraphic">
+          <h2 className="radialBarChartTitle">Score</h2>
+          {userTodayScore && <ScoreRadialBarChart data={userTodayScore} />}
+          <span className="radarBarChartLabel">de votre objectif</span>
+        </section>
         <aside className="keyDataCards">données clés</aside>
       </div>
     </>
