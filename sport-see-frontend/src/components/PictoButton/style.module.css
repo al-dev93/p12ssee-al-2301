@@ -1,11 +1,34 @@
+/* picto button wrapper */
 .wrapper {
   box-sizing: border-box;
-  width: 64px;
-  height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
   border-radius: 6px;
   line-height: 0;
+}
+/* style for nav picto */
+.navButtonSize {
+  width: 64px;
+  height: 64px;
+}
+.navButtonBackground {
+  background-color: var(--primary-color);
+}
+/* style for card picto */
+.cardButtonSize {
+  width: 60px;
+  height: 60px;
+}
+.cardButtonBackgroundCalorie {
+  background-color: var(--light-red-button-color);
+}
+.cardButtonBackgroundProtein {
+  background-color: var(--light-blue-button-color);
+}
+.cardButtonBackgroundCarb {
+  background-color: var(--light-yellow-button-color);
+}
+.cardButtonBackgroundLipid {
+  background-color: var(--light-pink-button-color);
 }

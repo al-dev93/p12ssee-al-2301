@@ -57,7 +57,7 @@ main {
   row-gap: 20px;
 }
 
-.pictoButton {
+/* .pictoButton {
   box-sizing: border-box;
   width: 64px;
   height: 64px;
@@ -67,7 +67,7 @@ main {
   background-color: var(--primary-color);
   border-radius: 6px;
   line-height: 0;
-}
+} */
 
 .copyright {
   margin: 164px 0 0 6px;

@@ -4,6 +4,7 @@ import pictoButtonList from "../../utils/pictoButtonList";
 import PictoButton from "../PictoButton";
 import logo from "../../assets/logo/logo.svg";
 
+const { navButton } = pictoButtonList;
 const Layout = () => (
   <div className="layoutWrapper">
     <header>
@@ -28,8 +29,8 @@ const Layout = () => (
     <main>
       <nav className="mainNav">
         <div className="pictoButtonsWrapper">
-          {pictoButtonList.map((picto) => (
-            <PictoButton key={picto.name} picto={picto.icon} />
+          {navButton.map((picto) => (
+            <PictoButton key={picto.name} picto={picto} />
           ))}
         </div>
         <p className="copyright">Copiryght, SportSee 2020</p>

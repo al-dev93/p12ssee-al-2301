@@ -10,6 +10,10 @@
   --mark-graphic-color: #c4c4c4;
   --light-grey-text-color: #9b9eac;
   --red-background-color: #ff0000;
+  --light-red-button-color: rgba(255, 0, 0, 0.0661);
+  --light-blue-button-color: rgba(74, 184, 255, 0.1);
+  --light-yellow-button-color: rgba(249, 207, 36, 0.1017);
+  --light-pink-button-color: rgba(253, 81, 129, 0.1);
   /* typography */
   --font-weight-regular: 400;
   --font-weight-medium: 500;

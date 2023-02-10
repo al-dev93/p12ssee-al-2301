@@ -7,7 +7,10 @@ import ActivityBarChart from "../../components/ActivityBarChart";
 import AverageSessionsGraphic from "../../components/AverageSessionsGraphic";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 import ScoreRadialBarChart from "../../components/ScoreRadialBarChart";
+import pictoButtonList from "../../utils/pictoButtonList";
+import CardKeyData from "../../components/CardKeyData";
 
+const { cardButton } = pictoButtonList;
 const Profil = () => {
   const { userId } = useParams();
   const {
@@ -35,11 +38,13 @@ const Profil = () => {
       </header>
       <div className="dashboardWrapper">
         <section className="activityGraphic">
-          <h2 className="barChartTitle">Activité quotidienne</h2>
+          <h2 className="chartTitle barChartTitle">Activité quotidienne</h2>
           {userActivity && <ActivityBarChart data={userActivity} />}
         </section>
         <section className="averageSessionsGraphic">
-          <h2 className="lineChartTitle">Durée moyenne des sessions</h2>
+          <h2 className="chartTitle lineChartTitle">
+            Durée moyenne des sessions
+          </h2>
           {userAverageSessions && (
             <AverageSessionsGraphic data={userAverageSessions} />
           )}
@@ -48,11 +53,20 @@ const Profil = () => {
           {userPerformance && <PerformanceRadarChart data={userPerformance} />}
         </section>
         <section className="todayScoreGraphic">
-          <h2 className="radialBarChartTitle">Score</h2>
+          <h2 className="chartTitle radialBarChartTitle">Score</h2>
           {userTodayScore && <ScoreRadialBarChart data={userTodayScore} />}
           <span className="radarBarChartLabel">de votre objectif</span>
         </section>
-        <aside className="keyDataCards">données clés</aside>
+        <aside className="keyDataCards">
+          {userKeyData &&
+            cardButton.map((button) => (
+              <CardKeyData
+                key={button.name}
+                button={button}
+                data={userKeyData}
+              />
+            ))}
+        </aside>
       </div>
     </>
   );
