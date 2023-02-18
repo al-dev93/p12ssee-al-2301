@@ -3,8 +3,9 @@ import { useLocation } from "react-router-dom";
 import { getFrenchKindName } from "../../utils/getFrenchKindName";
 import getSessionsWithDay from "../../utils/getSessionsWithDay";
 import getUserData from "../../utils/getUserData";
+import getUserScore from "../../utils/getUserScore";
 
-const useFetchData = (url, userId) => {
+const useFetchData = (userId) => {
   const locate = useLocation().pathname;
   const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
@@ -16,44 +17,41 @@ const useFetchData = (url, userId) => {
   useEffect(() => {
     (async function fetchData() {
       if (userId) {
-        fetch(url.userData)
+        fetch(`http://localhost:4000/user/${userId}`)
           .then((response) => response.json())
           .then((response) => {
             const data = getUserData(response.data, userId);
-            const score = Object.prototype.hasOwnProperty.call(
-              data,
-              "todayScore"
-            )
-              ? data.todayScore
-              : data.score;
+            const score = getUserScore(data);
             setUserData(data.userInfos);
             setUserTodayScore([{ score }]);
             setUserKeyData(data.keyData);
           });
-        fetch(url.userActivity)
+        fetch(`http://localhost:4000/user/${userId}/activity`)
           .then((response) => response.json())
           .then((response) => {
             const { sessions } = getUserData(response.data, userId);
             setUserActivity(sessions);
           });
-        fetch(url.userAverageSessions)
+        fetch(`http://localhost:4000/user/${userId}/average-sessions`)
           .then((response) => response.json())
           .then(async (response) => {
             const { sessions } = getUserData(response.data, userId);
             setUserSessions(sessions);
           });
-        fetch(url.userPerformance)
+        fetch(`http://localhost:4000/user/${userId}/performance`)
           .then((response) => response.json())
           .then((response) => {
             const { kind, data } = getUserData(response.data, userId);
             setDataPerformance({ kind, data });
           });
       } else {
-        const { data } = await (await fetch(url)).json();
+        const { data } = await (
+          await fetch(`http://localhost:4000/user`)
+        ).json();
         setUserData(data);
       }
     })();
-  }, [url, locate]);
+  }, [locate]);
 
   if (userId) {
     const userAverageSessions =

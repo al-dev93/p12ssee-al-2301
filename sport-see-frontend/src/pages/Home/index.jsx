@@ -1,12 +1,13 @@
 import "./style.css";
 import { Link } from "react-router-dom";
-import { USER_MAIN_DATA } from "../../utils/urlMockData";
+// import { USER_MAIN_DATA } from "../../utils/urlMockData";
 import useFetchData from "../../services/api/useFetchData";
+import loadMockedData from "../../utils/loadMockedData";
+
+const { REACT_APP_ENV } = process.env;
 
 const Home = () => {
-  const { users } = useFetchData(USER_MAIN_DATA);
-  // eslint-disable-next-line no-console
-  console.log(users);
+  const { users } = REACT_APP_ENV === "DEV" ? loadMockedData() : useFetchData();
 
   return (
     <div className="homeWrapper">

@@ -25,13 +25,15 @@ const selectedData = (data, button) => {
 const CardKeyData = ({ data, button }) => {
   return (
     <section className={cardKeyData.wrapper}>
-      <PictoButton picto={button} />
-      <div className={cardKeyData.cardBody}>
-        <p className={cardKeyData.cardText}>{`${selectedData(
-          data,
-          button
-        )}${unit(button)}`}</p>
-        <h2 className={cardKeyData.cardTitle}>{button.name}</h2>
+      <div className={cardKeyData.cardWrapper}>
+        <PictoButton picto={button} />
+        <div className={cardKeyData.cardBody}>
+          <p className={cardKeyData.cardText}>{`${selectedData(
+            data,
+            button
+          )}${unit(button)}`}</p>
+          <h2 className={cardKeyData.cardTitle}>{button.name}</h2>
+        </div>
       </div>
     </section>
   );

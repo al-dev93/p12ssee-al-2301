@@ -10,15 +10,15 @@ import {
 
 const ScoreRadialBarChart = ({ data }) => {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="99%" aspect={0.972}>
       <RadialBarChart
-        innerRadius={79.69}
+        innerRadius="69%"
         barGap={0}
         barCategoryGap={0}
         maxBarSize={10}
         data={data}
-        startAngle={210}
-        endAngle={-360}
+        startAngle={90}
+        endAngle={450}
       >
         <PolarAngleAxis type="number" domain={[0, 1]} angleAxisId={0} tick="" />
         <PolarRadiusAxis tick="" tickLine="" hide fill="transparent" stroke="">
@@ -35,7 +35,6 @@ const ScoreRadialBarChart = ({ data }) => {
           background=""
           fill="var(--red-background-color)"
           color=""
-          clockWise
           dataKey="score"
           cornerRadius="50%"
         />

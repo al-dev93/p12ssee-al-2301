@@ -17,6 +17,9 @@ const CustomizedCursor = ({
   width,
   bottom,
   fill,
+  wrapperHeight,
+  offset,
+  sessionMax,
   customTooltip,
   setCustomTooltip,
 }) => {
@@ -26,23 +29,19 @@ const CustomizedCursor = ({
       setCustomTooltip({
         x: points[0].x + 4,
         y:
-          (-payload[0].payload.sessionLength * height) /
-            customTooltip.activDotMaxValue +
+          (-payload[0].payload.sessionLength * height) / sessionMax +
           points[1].y -
-          customTooltip.wrapperHeight -
-          customTooltip.offset,
-        wrapperHeight: customTooltip.wrapperHeight,
-        offset: customTooltip.offset,
-        activDotMaxValue: customTooltip.activDotMaxValue,
+          wrapperHeight -
+          offset,
       });
     }, [payload[0]]);
   return (
     <>
       <Rectangle
         x={0}
-        y={bottom}
+        y={0}
         width={points[0].x - 1}
-        height={points[1].y}
+        height={points[1].y + bottom}
         fill={fill}
         onMouseMove={handleTooltipPosition}
       />
@@ -63,15 +62,10 @@ const AverageSessionsGraphic = ({ data }) => {
   const [customTooltip, setCustomTooltip] = useState({
     x: 0,
     y: 0,
-    wrapperHeight: 25,
-    offset: 10.91,
-    activDotMaxValue: data.reduce((prev, curr) =>
-      prev > curr.sessionLength ? prev : curr.sessionLength
-    ),
   });
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="99%" aspect={0.972}>
       <LineChart
         data={data}
         title="Durée moyenne des sessions"
@@ -180,17 +174,23 @@ CustomizedCursor.propTypes = {
   customTooltip: propTypes.shape({
     x: propTypes.number,
     y: propTypes.number,
-    wrapperHeight: propTypes.number,
-    offset: propTypes.number,
-    activDotMaxValue: propTypes.number,
   }),
   // eslint-disable-next-line react/require-default-props
   setCustomTooltip: propTypes.func,
+  wrapperHeight: propTypes.number,
+  offset: propTypes.number,
+  sessionMax: propTypes.number,
 };
 CustomizedCursor.defaultProps = {
   points: undefined,
   payload: undefined,
   bottom: undefined,
   fill: undefined,
-  customTooltip: undefined,
+  customTooltip: {
+    x: undefined,
+    y: undefined,
+  },
+  wrapperHeight: 25,
+  offset: 10.91,
+  sessionMax: 60,
 };

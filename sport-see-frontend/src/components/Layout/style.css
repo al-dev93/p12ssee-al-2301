@@ -1,9 +1,5 @@
 .layoutWrapper {
-  min-width: 1024px;
-  max-width: 100%;
-  min-height: 780px;
-  height: 100%;
-  margin: 0 auto;
+  width: 100%;
 }
 
 header {
@@ -36,9 +32,8 @@ header {
 }
 
 main {
+  width: 100%;
   display: flex;
-  min-height: 689px;
-  /* height: calc(100% - 3px); */
 }
 
 .mainNav {
@@ -57,28 +52,19 @@ main {
   row-gap: 20px;
 }
 
-/* .pictoButton {
-  box-sizing: border-box;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-color);
-  border-radius: 6px;
-  line-height: 0;
-} */
-
 .copyright {
   margin: 164px 0 0 6px;
   color: var(--primary-color);
   writing-mode: sideways-lr;
   font-size: 12px;
 }
-
+.profilPageWrapper {
+  margin: 17px 0;
+  padding: 68px 0 86px;
+  flex: 1;
+}
 article {
   box-sizing: border-box;
-  width: 79.38%;
+  width: fit-content;
   margin: 0 auto;
-  padding: 68px 0px 88px 17px;
 }

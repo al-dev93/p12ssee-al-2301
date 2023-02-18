@@ -2,17 +2,20 @@
 import "./style.css";
 import { useParams } from "react-router-dom";
 import useFetchData from "../../services/api/useFetchData";
-import { USER_ALL_DATA } from "../../utils/urlMockData";
+// import { USER_ALL_DATA } from "../../utils/urlMockData";
 import ActivityBarChart from "../../components/ActivityBarChart";
 import AverageSessionsGraphic from "../../components/AverageSessionsGraphic";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 import ScoreRadialBarChart from "../../components/ScoreRadialBarChart";
 import pictoButtonList from "../../utils/pictoButtonList";
 import CardKeyData from "../../components/CardKeyData";
+import loadMockedData from "../../utils/loadMockedData";
 
-const { cardButton } = pictoButtonList;
+const { REACT_APP_ENV } = process.env;
+
 const Profil = () => {
   const { userId } = useParams();
+  const { cardButton } = pictoButtonList;
   const {
     userData,
     userActivity,
@@ -20,7 +23,7 @@ const Profil = () => {
     userTodayScore,
     userPerformance,
     userKeyData,
-  } = useFetchData(USER_ALL_DATA, userId);
+  } = REACT_APP_ENV === "DEV" ? loadMockedData(userId) : useFetchData(userId);
   console.log(userData);
   console.log(userActivity);
   console.log(userAverageSessions);
@@ -31,10 +34,12 @@ const Profil = () => {
   return (
     <>
       <header className="dashboardHeader">
-        <h1>
-          Bonjour <strong>{userData && userData.firstName}</strong>
-        </h1>
-        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        <div className="titleWrapper">
+          <h1>
+            Bonjour <strong>{userData && userData.firstName}</strong>
+          </h1>
+          <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        </div>
       </header>
       <div className="dashboardWrapper">
         <section className="activityGraphic">

@@ -1,10 +1,12 @@
 /* global profil page style */
 .dashboardHeader {
   display: block;
-  width: max-content;
+  width: 100%;
   background: none;
-  margin-bottom: 77px;
   padding: 0;
+}
+.titleWrapper {
+  margin: 0 auto 77px 0;
 }
 .dashboardHeader h1 {
   margin: 0 0 41px;
@@ -13,15 +15,16 @@
   font-weight: var(--font-weight-medium);
 }
 .dashboardWrapper {
+  margin-left: 3px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(263px, auto);
-  column-gap: 30px;
-  row-gap: 28px;
+  grid-template-columns: repeat(4, minmax(177.6px, 259px));
+  gap: 30px;
 }
-.dashboardWrapper section {
+.dashboardWrapper section,
+.cardWrapper {
   box-sizing: border-box;
   border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
 }
 .dashboardWrapper h2 {
   margin: 0;
@@ -34,20 +37,14 @@
 /* activity bar chart */
 .activityGraphic {
   grid-area: 1 / 1 / 2 / 4;
-  height: 320px;
   position: relative;
+  padding: 23px 24px 23px 21px;
   background-color: var(--light-background-color);
 }
 .barChartTitle {
   top: 24px;
   left: 32px;
   color: var(--title-text-color);
-}
-/* height of chart wrappers  */
-.averageSessionsGraphic,
-.performanceGraphic,
-.todayScoreGraphic {
-  height: 263px;
 }
 /* average time of session line chart */
 .averageSessionsGraphic {
@@ -96,4 +93,5 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: stretch;
 }

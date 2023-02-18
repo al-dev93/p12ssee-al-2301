@@ -27,7 +27,7 @@ const CustomizedTick = ({ payload, radius, cx, cy, x, y, textAnchor }) => {
       fontSize={12}
       fontWeight={500}
       fill="var(--primary-color)"
-      textAnchor={textAnchor}
+      textAnchor={visualViewport.width >= 1240 ? textAnchor : "middle"}
       capHeight="1.5em"
       verticalAnchor={verticalAnchor()}
       className="recharts-polar-angle-axis-tick-value"
@@ -39,8 +39,8 @@ const CustomizedTick = ({ payload, radius, cx, cy, x, y, textAnchor }) => {
 
 const PerformanceRadarChart = ({ data }) => {
   return (
-    <ResponsiveContainer width="100%" height="100%" margin="12px 5px">
-      <RadarChart data={data} outerRadius={88}>
+    <ResponsiveContainer width="99%" aspect={0.972} margin="12px 2px 12px 5px">
+      <RadarChart data={data} outerRadius="72%">
         <PolarGrid
           radialLines=""
           stroke="var(--primary-color)"

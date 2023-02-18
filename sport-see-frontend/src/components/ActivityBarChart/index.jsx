@@ -9,7 +9,24 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+
+function getTopMargin() {
+  switch (true) {
+    case window.innerWidth >= 1400:
+      return 64;
+    case window.innerWidth >= 1300:
+      return 50;
+    case window.innerWidth >= 1200:
+      return 36;
+    case window.innerWidth >= 1100:
+      return 22;
+    case window.innerWidth >= 1000:
+      return 10;
+    default:
+      return 5;
+  }
+}
 
 const legendStyle = (value) => {
   return (
@@ -27,6 +44,7 @@ const legendStyle = (value) => {
 
 const ActivityBarChart = ({ data }) => {
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [topMargin, setTopMargin] = useState(getTopMargin());
 
   const handleMouseMove = useCallback(
     (entry) => {
@@ -37,58 +55,64 @@ const ActivityBarChart = ({ data }) => {
     [setTooltipPosition]
   );
 
+  useEffect(() => {
+    function handleResize() {
+      setTopMargin(getTopMargin());
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="99%" aspect={2.86} onResize>
       <BarChart
         data={data}
         margin={{
-          top: 112,
-          bottom: 39,
-          right: 72,
-          left: 43,
+          top: topMargin,
+          bottom: 9,
+          right: 44,
+          left: 20,
         }}
         barSize={7}
-        barCategoryGap={68}
         barGap={8}
         title="Activité quotidienne"
       >
-        <CartesianGrid
-          vertical=""
-          strokeDasharray="3 3"
-          width={702}
-          height={145}
-        />
+        <CartesianGrid vertical="" strokeDasharray="3 3" viewBox="" />
         <XAxis
           axisLine={{ stroke: "var(--graphic-lightness-grey-color)" }}
-          height={24}
-          padding={{ left: -44, right: -44 }}
-          tickMargin={16}
-          fontSize={14}
+          padding={{ left: 11, right: 11 }}
+          tickMargin={25}
+          tickSize={0}
+          tickLine=""
+          tickCount={7}
+          tickFormatter={(value, index) => `${index + 1}`}
+          fontSize="0.875em"
           fontWeight={500}
           color="var(--light-grey-text-color)"
-          dataKey={() => data.map((el, index) => `${index + 1}`)}
-          tickLine=""
-          domain={["dataMin", "dataMax"]}
+          dataKey="day"
+          scale="point"
         />
         <YAxis
           yAxisId="left"
           orientation="left"
           tickMargin={0}
-          axisLine=""
+          tickSize={0}
           tickLine=""
+          axisLine=""
           type="number"
           hide="true"
           domain={["auto", "auto"]}
         />
         <YAxis
+          yAxisId="right"
+          orientation="right"
           tickMargin={43}
-          width={18}
+          tickSize={0}
+          tickLine=""
+          axisLine=""
           fontSize={14}
           fontWeight={500}
-          yAxisId="right"
-          axisLine=""
-          tickLine=""
-          orientation="right"
+          width={18}
           type="number"
           domain={["dataMin - 1", "dataMax"]}
         />
@@ -127,7 +151,6 @@ const ActivityBarChart = ({ data }) => {
             opacity: 0.5,
             x: tooltipPosition.x,
           }}
-          // offset={28}
           position={{ x: tooltipPosition.x + 63, y: tooltipPosition.y }}
           allowEscapeViewBox={{ y: true }}
         />
@@ -150,7 +173,7 @@ const ActivityBarChart = ({ data }) => {
           ]}
           iconSize={8}
           iconType="circle"
-          wrapperStyle={{ top: 24, right: 26 }}
+          wrapperStyle={{ top: 0, right: 0 }}
         />
         <Bar
           yAxisId="right"
@@ -159,6 +182,7 @@ const ActivityBarChart = ({ data }) => {
           radius={[3, 3, 0, 0]}
           name="kg"
           onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseMove}
         />
         <Bar
           yAxisId="left"
@@ -167,6 +191,7 @@ const ActivityBarChart = ({ data }) => {
           radius={[3, 3, 0, 0]}
           name="Kcal"
           onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseMove}
         />
       </BarChart>
     </ResponsiveContainer>
