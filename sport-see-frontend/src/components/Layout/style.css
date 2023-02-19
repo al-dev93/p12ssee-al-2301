@@ -1,3 +1,4 @@
+/* layout container */
 .layoutWrapper {
   width: 100%;
 }
@@ -9,7 +10,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+/* horizontal nav bar */
 .headerNav {
   width: 75.25%;
   padding: 36px 0 31px;
@@ -35,7 +36,7 @@ main {
   width: 100%;
   display: flex;
 }
-
+/* vertical nav bar */
 .mainNav {
   position: relative;
   padding: 0 27px 361px 26px;
@@ -62,11 +63,13 @@ main {
   transform: rotate(-90deg);
   font-size: 12px;
 }
+/* page render */
 .pageWrapper {
   height: 100%;
   padding: 68px 0 85.5px;
   flex: 1;
 }
+
 article {
   box-sizing: border-box;
   padding: 0 17px;

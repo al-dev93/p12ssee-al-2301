@@ -10,7 +10,22 @@ import {
 } from "recharts";
 import { frenchKind } from "../../utils/getFrenchKindName";
 
+/**
+ * @description tick component
+ * @param {object} payload
+ * @param {number} radius
+ * @param {number} cx
+ * @param {number} cy
+ * @param {number} x
+ * @param {number} y
+ * @param {string} textAnchor
+ * @returns render custom ticks
+ */
 const CustomizedTick = ({ payload, radius, cx, cy, x, y, textAnchor }) => {
+  /**
+   * @description get vertical position of tick
+   * @returns string
+   */
   const verticalAnchor = () => {
     if (payload.index === 3) return "start";
     if (!payload.index) return "end";
@@ -37,6 +52,11 @@ const CustomizedTick = ({ payload, radius, cx, cy, x, y, textAnchor }) => {
   );
 };
 
+/**
+ * @description graph component
+ * @param {object} data
+ * @returns render radar chart of user performance
+ */
 const PerformanceRadarChart = ({ data }) => {
   return (
     <ResponsiveContainer width="99%" aspect={0.972} margin="12px 2px 12px 5px">

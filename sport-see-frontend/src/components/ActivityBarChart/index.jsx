@@ -11,6 +11,10 @@ import {
 } from "recharts";
 import { useState, useCallback, useEffect } from "react";
 
+/**
+ * @description get top margin according to the width of viewport
+ * @returns number
+ */
 function getTopMargin() {
   switch (true) {
     case window.innerWidth >= 1400:
@@ -27,7 +31,11 @@ function getTopMargin() {
       return 5;
   }
 }
-
+/**
+ * @description set style of the legend
+ * @param {string} value
+ * @returns render legend in span
+ */
 const legendStyle = (value) => {
   return (
     <span
@@ -41,20 +49,32 @@ const legendStyle = (value) => {
     </span>
   );
 };
-
+/**
+ * @description graph component
+ * @param {object} data
+ * @returns render bar chart activity of user
+ */
 const ActivityBarChart = ({ data }) => {
+  // tooltip coordinates
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  // top margin of bar chart
   const [topMargin, setTopMargin] = useState(getTopMargin());
-
+  /**
+   * set the x tooltip position according to the position of the mouse
+   */
   const handleMouseMove = useCallback(
     (entry) => {
       const xTooltip =
-        entry.tooltipPayload[0].name === "kg" ? entry.x - 23.5 : entry.x - 38.5;
+        entry.tooltipPayload[0].name === "kg"
+          ? entry.x - 23.5 // x tooltip position for weight
+          : entry.x - 38.5; // x tooltip position for calorie
       setTooltipPosition({ x: xTooltip, y: entry.background.y - 30 });
     },
     [setTooltipPosition]
   );
-
+  /**
+   * set the top margin when the window is resized
+   */
   useEffect(() => {
     function handleResize() {
       setTopMargin(getTopMargin());
@@ -68,6 +88,7 @@ const ActivityBarChart = ({ data }) => {
       <BarChart
         data={data}
         margin={{
+          // changes with window width
           top: topMargin,
           bottom: 9,
           right: 44,

@@ -4,7 +4,12 @@ import pictoButtonList from "../../utils/pictoButtonList";
 import PictoButton from "../PictoButton";
 import logo from "../../assets/logo/logo.svg";
 
+/**
+ * @description layout component
+ * @returns render layout for home and profil pages
+ */
 const Layout = () => {
+  // list of buttons in left nav bar
   const { navButton } = pictoButtonList;
   return (
     <div className="layoutWrapper">
@@ -36,7 +41,9 @@ const Layout = () => {
           </div>
           <span className="copyright">Copiryght, SportSee 2020</span>
         </nav>
+        {/* container where page content is rendered */}
         <div className="pageWrapper">
+          {/* element in wich the page is rendered */}
           <article>
             <Outlet />
           </article>

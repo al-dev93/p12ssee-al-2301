@@ -56,7 +56,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
+/* for user page title  */
 strong {
   color: var(--emphasis-text-color);
 }

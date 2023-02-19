@@ -4,9 +4,15 @@ import useFetchData from "../../services/api/useFetchData";
 import loadMockedData from "../../utils/loadMockedData";
 import REACT_APP_ENV from "../../utils/processEnvironment";
 
+/**
+ * @description page component
+ * @returns render home page
+ */
 const Home = () => {
   const { userData } =
-    REACT_APP_ENV === "DEV" ? loadMockedData() : useFetchData();
+    REACT_APP_ENV === "DEV"
+      ? loadMockedData() // load mocked user data of all users in DEV start
+      : useFetchData(); // fetch user data of all users in production start
 
   return (
     <div className="homeWrapper">

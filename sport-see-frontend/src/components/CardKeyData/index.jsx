@@ -2,10 +2,20 @@ import propTypes from "prop-types";
 import PictoButton from "../PictoButton";
 import cardKeyData from "./style.module.css";
 
+/**
+ * @description get unit of the value in card
+ * @param {object} button
+ * @returns string
+ */
 const unit = (button) => {
   return button.name === "Calories" ? "kCal" : "g";
 };
-
+/**
+ * @description get the value in card according to the name button
+ * @param {object} data
+ * @param {object} button
+ * @returns number
+ */
 const selectedData = (data, button) => {
   switch (button.name) {
     case "Calories":
@@ -21,7 +31,12 @@ const selectedData = (data, button) => {
   }
   return null;
 };
-
+/**
+ * @description card component
+ * @param {object} data
+ * @param {object} button
+ * @returns render card key data
+ */
 const CardKeyData = ({ data, button }) => {
   return (
     <section className={cardKeyData.wrapper}>

@@ -1,4 +1,4 @@
-/* picto button wrapper */
+/* picto button container */
 .wrapper {
   box-sizing: border-box;
   display: flex;
@@ -7,7 +7,7 @@
   border-radius: 6px;
   line-height: 0;
 }
-/* style for nav picto */
+/* rules for nav picto */
 .navButtonSize {
   width: 64px;
   height: 64px;
@@ -15,7 +15,7 @@
 .navButtonBackground {
   background-color: var(--primary-color);
 }
-/* style for card picto */
+/* rules for card picto */
 .cardButtonSize {
   width: 60px;
   height: 60px;

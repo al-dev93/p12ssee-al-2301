@@ -10,6 +10,21 @@ import {
   XAxis,
 } from "recharts";
 
+/**
+ * @description graph component
+ * @param {array} points
+ * @param {array} payload
+ * @param {number} height
+ * @param {number} width
+ * @param {number} bottom
+ * @param {string} fill
+ * @param {number} wrapperHeight
+ * @param {number} offset
+ * @param {number} sessionMax
+ * @param {object} customTooltip
+ * @param {function} setCustomTooltip
+ * @returns render custom cursor depending mouse position
+ */
 const CustomizedCursor = ({
   points,
   payload,
@@ -23,6 +38,9 @@ const CustomizedCursor = ({
   customTooltip,
   setCustomTooltip,
 }) => {
+  /**
+   * set tooltip position
+   */
   const handleTooltipPosition =
     customTooltip &&
     useCallback(() => {
@@ -37,6 +55,7 @@ const CustomizedCursor = ({
     }, [payload[0]]);
   return (
     <>
+      {/* cursor with linear gradient */}
       <Rectangle
         x={0}
         y={0}
@@ -45,6 +64,7 @@ const CustomizedCursor = ({
         fill={fill}
         onMouseMove={handleTooltipPosition}
       />
+      {/* cursor with black opacity */}
       <Rectangle
         x={points[0].x - 1}
         y={0}
@@ -57,8 +77,13 @@ const CustomizedCursor = ({
     </>
   );
 };
-
+/**
+ * @description graph component
+ * @param {object} data
+ * @returns render line chart of average durations of user's sessions
+ */
 const AverageSessionsGraphic = ({ data }) => {
+  // tooltip coordinates
   const [customTooltip, setCustomTooltip] = useState({
     x: 0,
     y: 0,
@@ -72,6 +97,7 @@ const AverageSessionsGraphic = ({ data }) => {
         margin={{ top: 77.27, bottom: 35.52 }}
       >
         <defs>
+          {/* linear gradient for custom cursor */}
           <linearGradient id="cursorFill" x1="0" y1="1" x2="0" y2="0">
             <stop
               offset="0%"

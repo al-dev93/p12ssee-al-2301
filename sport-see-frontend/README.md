@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Project 12 Front-end graphical analytics dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. General informations
 
-## Available Scripts
+The folders and files contained in this part of the repository tree relate to the front-end of the project. View the [https://github.com/al-dev93/p12ssee-al-2301/tree/p12ssee-us15/sport-see-backend] folder to install the micro API.
 
-In the project directory, you can run:
+## 2. Project setup
 
-### `npm start`
+### 2.1 Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+First you have to fork the repository and clone it on your computer. You must also install the micro API before installing the front end, see [https://github.com/al-dev93/p12ssee-al-2301/blob/p12ssee-us15/sport-see-backend/README.md] for mor informations.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2.2 Front-End installation
 
-### `npm test`
+Once the repository is cloned on your computer and the micro API is installed, go to your terminal in the folder `/sport-see-frontend$` and use the `yarn` command to install the project dependencies.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Run project
 
-### `npm run build`
+### 3.1 Run with mocked data
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 3.1.1 Mocked data
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Data is mocked in the following json files:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `activity.json`
+- `average-sessions.json`
+- `performance.json`
+- `users.json`
+  These files are saved in the directory `/sport-see-frontend/src/services/mock$`
 
-### `npm run eject`
+#### 3.1.2 Run in dev mode
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- In the terminal, go to the front-end folder `/sport-see-frontend$`
+- Use the command `yarn dev`
+- The browser opens to the homepage, otherwise enter `http://localhost:3000` in the adress bar of the browser
+- Click on one of the two users created to access their graphical analysis dashboard of their sports activity
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3.2 Run with API data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Note**: make sure the micro API has been installed beforehand.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- In the terminal, go to the back-end folder `/sport-see-backend$`
+- Use the command `yarn dev`
+- In the terminal, a message is displayed warning that the API has started on port 4000
+- In the terminal, go to the front-end folder `/sport-see-frontend$`
+- Use the command `yarn start`
+- The browser opens to the homepage, otherwise enter `http://localhost:3000` in the adress bar of the browser
+- Click on one user to access their graphical analysis dashboard of their sports activity

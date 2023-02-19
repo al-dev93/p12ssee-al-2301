@@ -7,6 +7,9 @@ import carb from "../assets/icons/carb-icon.svg";
 import lipid from "../assets/icons/lipid-icon.svg";
 import protein from "../assets/icons/protein-icon.svg";
 
+/**
+ * List of pictograms used for nav and card buttons
+ */
 const pictoButtonList = {
   navButton: [
     {

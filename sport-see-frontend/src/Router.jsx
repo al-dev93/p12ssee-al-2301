@@ -3,6 +3,9 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Profil from "./pages/Profil";
 
+/**
+ * Routes for front-end application
+ */
 const Router = createBrowserRouter([
   {
     path: "/",

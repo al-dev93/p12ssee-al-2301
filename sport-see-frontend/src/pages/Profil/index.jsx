@@ -11,9 +11,16 @@ import CardKeyData from "../../components/CardKeyData";
 import loadMockedData from "../../utils/loadMockedData";
 import REACT_APP_ENV from "../../utils/processEnvironment";
 
+/**
+ * @description page component
+ * @returns render the user page
+ */
 const Profil = () => {
+  // get user id from url parameters
   const { userId } = useParams();
+  // get buttons for cards
   const { cardButton } = pictoButtonList;
+  // get data used for graphics
   const {
     userData,
     userActivity,
@@ -21,13 +28,16 @@ const Profil = () => {
     userTodayScore,
     userPerformance,
     userKeyData,
-  } = REACT_APP_ENV === "DEV" ? loadMockedData(userId) : useFetchData(userId);
-  console.log(userData);
-  console.log(userActivity);
-  console.log(userAverageSessions);
-  console.log(userTodayScore);
-  console.log(userPerformance);
-  console.log(userKeyData);
+  } =
+    REACT_APP_ENV === "DEV"
+      ? loadMockedData(userId) // load mocked data in DEV start
+      : useFetchData(userId); // fetch data from Api in production start
+  // console.log(userData);
+  // console.log(userActivity);
+  // console.log(userAverageSessions);
+  // console.log(userTodayScore);
+  // console.log(userPerformance);
+  // console.log(userKeyData);
 
   return (
     <>

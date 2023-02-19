@@ -8,6 +8,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/**
+ * @description graph component
+ * @param {object} data
+ * @returns render radial bar chart with user score
+ */
 const ScoreRadialBarChart = ({ data }) => {
   return (
     <ResponsiveContainer width="99%" aspect={0.972}>

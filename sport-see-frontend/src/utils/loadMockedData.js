@@ -6,7 +6,13 @@ import getSessionsWithDay from "./getSessionsWithDay";
 import { getFrenchKindName } from "./getFrenchKindName";
 import getUserData from "./getUserData";
 
+/**
+ * @description Load mocked data from json files
+ * @param {string} userId
+ * @returns object
+ */
 function loadMockedData(userId) {
+  // for the home page
   if (!userId)
     return {
       userData: users.data.map((item) => {
@@ -17,6 +23,7 @@ function loadMockedData(userId) {
         };
       }),
     };
+  // for the user page
   const userIdInfo = getUserData(users.data, userId);
   const userIdActivity = getUserData(activity.data, userId).sessions;
   const userIdSessions = getUserData(session.data, userId).sessions;

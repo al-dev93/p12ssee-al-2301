@@ -3,10 +3,15 @@ import { useLocation } from "react-router-dom";
 import { getFrenchKindName } from "../../utils/getFrenchKindName";
 import getSessionsWithDay from "../../utils/getSessionsWithDay";
 import users from "../../utils/getUsers";
-import getUserScore from "../../utils/getUserScore";
 
+/**
+ * @description hook for fetch data from the api format it and return it
+ * @param {string} userId
+ * @returns object - data used for render graphs and cards
+ */
 const useFetchData = (userId) => {
   const locate = useLocation().pathname;
+  // stored fetc data
   const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
   const [userSessions, setUserSessions] = useState(null);
@@ -15,15 +20,17 @@ const useFetchData = (userId) => {
   const [userKeyData, setUserKeyData] = useState(null);
 
   useEffect(() => {
+    /**
+     * autorun callback to fetch endpoint data
+     */
     (function fetchData() {
       if (userId) {
         fetch(`http://localhost:4000/user/${userId}`)
           .then((response) => response.json())
           .then((response) => {
             const { data } = response;
-            const score = getUserScore(data);
             setUserData(data.userInfos);
-            setUserTodayScore([{ score }]);
+            setUserTodayScore([{ score: data.score || data.todayScore }]);
             setUserKeyData(data.keyData);
           });
         fetch(`http://localhost:4000/user/${userId}/activity`)
@@ -45,6 +52,7 @@ const useFetchData = (userId) => {
             setDataPerformance({ kind, data });
           });
       } else {
+        // for home page
         const response = [];
         users.forEach(async (id, index, arr) => {
           const { data } = await (
@@ -62,12 +70,13 @@ const useFetchData = (userId) => {
   }, [locate]);
 
   if (userId) {
+    // for profil page
     const userAverageSessions =
       userActivity && userSessions
-        ? getSessionsWithDay(userActivity, userSessions)
+        ? getSessionsWithDay(userActivity, userSessions) // add first letter of day
         : null;
     const userPerformance =
-      dataPerformance && getFrenchKindName(dataPerformance);
+      dataPerformance && getFrenchKindName(dataPerformance); // add performance kind in french
     return {
       userData,
       userActivity,

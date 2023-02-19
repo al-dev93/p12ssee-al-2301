@@ -1,4 +1,6 @@
-/* global profil page style */
+/* style for user page */
+
+/* header */
 .dashboardHeader {
   display: block;
   width: 100%;
@@ -14,12 +16,14 @@
   font-size: 48px;
   font-weight: var(--font-weight-medium);
 }
+/* dashboard container */
 .dashboardWrapper {
   margin-left: 3px;
   display: grid;
   grid-template-columns: repeat(4, minmax(177.6px, 259px));
   gap: 30px;
 }
+/* global rules */
 .dashboardWrapper section,
 .cardWrapper {
   box-sizing: border-box;

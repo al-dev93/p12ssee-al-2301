@@ -1,4 +1,4 @@
-/* style for card key data */
+/* outter container of card key data */
 .wrapper {
   width: 100%;
   height: 20.23%;
@@ -7,13 +7,13 @@
   justify-content: space-around;
   background-color: var(--light-background-color);
 }
+/* inner container of card */
 .cardWrapper {
-  /* max-width: 67.83%; */
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   column-gap: 24px;
 }
+/* rules for card text */
 .cardBody {
   height: max-content;
   width: 51px;
