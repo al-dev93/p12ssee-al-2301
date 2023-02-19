@@ -40,7 +40,11 @@ const CustomizedTick = ({ payload, radius, cx, cy, x, y, textAnchor }) => {
 const PerformanceRadarChart = ({ data }) => {
   return (
     <ResponsiveContainer width="99%" aspect={0.972} margin="12px 2px 12px 5px">
-      <RadarChart data={data} outerRadius="72%">
+      <RadarChart
+        data={data}
+        outerRadius="72%"
+        title="Performance par catégorie"
+      >
         <PolarGrid
           radialLines=""
           stroke="var(--primary-color)"

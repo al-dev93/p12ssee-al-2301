@@ -34,9 +34,9 @@ const Layout = () => {
               <PictoButton key={picto.name} picto={picto} />
             ))}
           </div>
-          <p className="copyright">Copiryght, SportSee 2020</p>
+          <span className="copyright">Copiryght, SportSee 2020</span>
         </nav>
-        <div className="profilPageWrapper">
+        <div className="pageWrapper">
           <article>
             <Outlet />
           </article>

@@ -2,7 +2,6 @@
 import "./style.css";
 import { useParams } from "react-router-dom";
 import useFetchData from "../../services/api/useFetchData";
-// import { USER_ALL_DATA } from "../../utils/urlMockData";
 import ActivityBarChart from "../../components/ActivityBarChart";
 import AverageSessionsGraphic from "../../components/AverageSessionsGraphic";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
@@ -10,8 +9,7 @@ import ScoreRadialBarChart from "../../components/ScoreRadialBarChart";
 import pictoButtonList from "../../utils/pictoButtonList";
 import CardKeyData from "../../components/CardKeyData";
 import loadMockedData from "../../utils/loadMockedData";
-
-const { REACT_APP_ENV } = process.env;
+import REACT_APP_ENV from "../../utils/processEnvironment";
 
 const Profil = () => {
   const { userId } = useParams();

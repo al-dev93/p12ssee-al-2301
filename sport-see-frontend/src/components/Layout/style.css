@@ -37,7 +37,8 @@ main {
 }
 
 .mainNav {
-  padding: 0 27px 59px 26px;
+  position: relative;
+  padding: 0 27px 361px 26px;
   background-color: var(--dark-background-color);
   display: flex;
   flex-direction: column;
@@ -53,18 +54,22 @@ main {
 }
 
 .copyright {
-  margin: 164px 0 0 6px;
+  position: absolute;
+  width: 138px;
+  bottom: 128px;
+  left: -21px;
   color: var(--primary-color);
-  writing-mode: sideways-lr;
+  transform: rotate(-90deg);
   font-size: 12px;
 }
-.profilPageWrapper {
-  margin: 17px 0;
-  padding: 68px 0 86px;
+.pageWrapper {
+  height: 100%;
+  padding: 68px 0 85.5px;
   flex: 1;
 }
 article {
   box-sizing: border-box;
+  padding: 0 17px;
   width: fit-content;
   margin: 0 auto;
 }

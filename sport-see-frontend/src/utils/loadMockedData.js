@@ -9,7 +9,7 @@ import getUserData from "./getUserData";
 function loadMockedData(userId) {
   if (!userId)
     return {
-      users: users.data.map((item) => {
+      userData: users.data.map((item) => {
         return {
           id: item.id,
           firstName: item.userInfos.firstName,

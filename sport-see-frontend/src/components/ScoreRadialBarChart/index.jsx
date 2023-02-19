@@ -19,6 +19,7 @@ const ScoreRadialBarChart = ({ data }) => {
         data={data}
         startAngle={90}
         endAngle={450}
+        title="Score du jour"
       >
         <PolarAngleAxis type="number" domain={[0, 1]} angleAxisId={0} tick="" />
         <PolarRadiusAxis tick="" tickLine="" hide fill="transparent" stroke="">
